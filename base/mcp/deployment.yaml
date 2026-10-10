@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: changeguard-mcp
+  namespace: changeguard
+  labels:
+    app: changeguard-mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: changeguard-mcp
+  template:
+    metadata:
+      labels:
+        app: changeguard-mcp
+    spec:
+      containers:
+        - name: mcp
+          image: ghcr.io/quantum-vector/changeguard-ai-mcp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: APP_ENV
+            - name: GITOPS_REPO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: GITOPS_REPO_URL
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: KUBERNETES_NAMESPACE
+          readinessProbe:
+            httpGet:
+              path: /mcp/health
+              port: 9000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /mcp/health
+              port: 9000
+            initialDelaySeconds: 20
+            periodSeconds: 20

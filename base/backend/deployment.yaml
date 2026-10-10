@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: changeguard-backend
+  namespace: changeguard
+  labels:
+    app: changeguard-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: changeguard-backend
+  template:
+    metadata:
+      labels:
+        app: changeguard-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/quantum-vector/changeguard-ai-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: APP_ENV
+            - name: OPENAI_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: OPENAI_MODEL
+            - name: MCP_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: MCP_SERVER_URL
+            - name: GITOPS_REPO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: GITOPS_REPO_URL
+            - name: GITHUB_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: GITHUB_API_URL
+            - name: PROMETHEUS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: PROMETHEUS_URL
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 20

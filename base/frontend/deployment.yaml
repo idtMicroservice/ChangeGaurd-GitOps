@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: changeguard-frontend
+  namespace: changeguard
+  labels:
+    app: changeguard-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: changeguard-frontend
+  template:
+    metadata:
+      labels:
+        app: changeguard-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/quantum-vector/changeguard-ai-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: APP_ENV
+            - name: CORS_ORIGINS
+              valueFrom:
+                configMapKeyRef:
+                  name: changeguard-config
+                  key: CORS_ORIGINS
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8501
+            initialDelaySeconds: 20
+            periodSeconds: 20

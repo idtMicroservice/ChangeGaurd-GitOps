@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: changeguard-backend
+spec:
+  project: changeguard
+  source:
+    repoURL: https://github.com/quantum-vector/changeguard-ai.git
+    targetRevision: main
+    path: gitops/base/backend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: changeguard
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

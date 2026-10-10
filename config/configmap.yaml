@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: changeguard-config
+  namespace: changeguard
+data:
+  APP_ENV: production
+  GITOPS_REPO_URL: https://github.com/quantum-vector/changeguard-ai.git
+  GITHUB_API_URL: https://api.github.com
+  OPENAI_MODEL: gpt-5
+  MCP_SERVER_URL: http://changeguard-mcp:9000
+  PROMETHEUS_URL: http://prometheus-operated.monitoring.svc:9090
+  ARGOCD_URL: https://argocd-server.argocd.svc
+  KUBERNETES_NAMESPACE: changeguard
+  CORS_ORIGINS: "*"

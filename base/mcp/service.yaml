@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: changeguard-mcp
+  namespace: changeguard
+spec:
+  selector:
+    app: changeguard-mcp
+  ports:
+    - name: http
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
