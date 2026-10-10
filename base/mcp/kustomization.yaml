@@ -5,5 +5,5 @@ resources:
   - service.yaml
 images:
   - name: changeguard/mcp
-    newName: ghcr.io/quantum-vector/changeguard-ai-mcp
+    newName: docker.io/manojkrishnappa/changeguard-mcp
     newTag: "latest"

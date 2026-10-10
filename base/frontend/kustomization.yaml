@@ -5,5 +5,5 @@ resources:
   - service.yaml
 images:
   - name: changeguard/frontend
-    newName: ghcr.io/quantum-vector/changeguard-ai-frontend
+    newName: docker.io/manojkrishnappa/changeguard-frontend
     newTag: "latest"

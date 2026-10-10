@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/quantum-vector/changeguard-ai-backend:latest
+          image: changeguard/backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

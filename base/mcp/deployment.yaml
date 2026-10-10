@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mcp
-          image: ghcr.io/quantum-vector/changeguard-ai-mcp:latest
+          image: changeguard/mcp:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
