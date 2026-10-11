@@ -6,4 +6,4 @@ resources:
 images:
   - name: changeguard/mcp
     newName: docker.io/manojkrishnappa/changeguard-mcp
-    newTag: "latest"
+    newTag: "d3877ad0d3b2"
