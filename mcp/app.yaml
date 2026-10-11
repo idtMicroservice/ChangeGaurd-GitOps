@@ -5,9 +5,9 @@ metadata:
 spec:
   project: changeguard
   source:
-    repoURL: https://github.com/quantum-vector/changeguard-ai.git
+    repoURL: https://github.com/idtMicroservice/GitOps.git
     targetRevision: main
-    path: gitops/base/mcp
+    path: base/mcp
   destination:
     server: https://kubernetes.default.svc
     namespace: changeguard
