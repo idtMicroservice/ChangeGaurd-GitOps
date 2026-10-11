@@ -32,15 +32,3 @@ spec:
                 configMapKeyRef:
                   name: changeguard-config
                   key: CORS_ORIGINS
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8501
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8501
-            initialDelaySeconds: 20
-            periodSeconds: 20
