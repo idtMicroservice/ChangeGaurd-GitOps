@@ -6,4 +6,4 @@ resources:
 images:
   - name: changeguard/backend
     newName: docker.io/manojkrishnappa/changeguard-backend
-    newTag: "latest"
+    newTag: "4ee0a2360ed7"
