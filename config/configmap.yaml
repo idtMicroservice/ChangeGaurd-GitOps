@@ -5,7 +5,7 @@ metadata:
   namespace: changeguard
 data:
   APP_ENV: production
-  GITOPS_REPO_URL: https://github.com/quantum-vector/changeguard-ai.git
+  GITOPS_REPO_URL: https://github.com/idtMicroservice/ChangeGaurd-GitOps.git
   GITHUB_API_URL: https://api.github.com
   OPENAI_MODEL: gpt-5
   MCP_SERVER_URL: http://changeguard-mcp:9000
