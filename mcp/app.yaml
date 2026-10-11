@@ -5,7 +5,7 @@ metadata:
 spec:
   project: changeguard
   source:
-    repoURL: https://github.com/idtMicroservice/GitOps.git
+    repoURL: https://github.com/idtMicroservice/ChangeGaurd-GitOps.git
     targetRevision: main
     path: base/mcp
   destination:

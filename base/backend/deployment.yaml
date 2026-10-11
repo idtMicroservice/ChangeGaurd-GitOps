@@ -20,7 +20,7 @@ spec:
           image: changeguard/backend:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
           env:
             - name: APP_ENV
               valueFrom:
@@ -55,12 +55,12 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: 8000
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: 8000
             initialDelaySeconds: 20
             periodSeconds: 20
