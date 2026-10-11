@@ -20,7 +20,7 @@ spec:
           image: changeguard/frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8501
+            - containerPort: 3000
           env:
             - name: APP_ENV
               valueFrom:
