@@ -4,6 +4,7 @@ metadata:
   name: changeguard-frontend
   namespace: changeguard
 spec:
+  type: LoadBalancer
   selector:
     app: changeguard-frontend
   ports:
@@ -11,3 +12,4 @@ spec:
       port: 80
       targetPort: 8501
       protocol: TCP
+
